@@ -3,6 +3,12 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'maven-publish'
 }
+repositories {
+    google()
+    mavenCentral()
+    // JitPack if you depend on GitHub libraries
+    maven { url 'https://jitpack.io' }
+}
 
 group = "com.snappy"
 version = "1.0.0"
