@@ -54,7 +54,6 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     implementation(project(":TestModule"))
-    implementation("com.github.191884:TestModule:1")
 //    implementation("com.github.spiraldevapps-com:A1AppSDK:1.0.18")
 
 }
