@@ -1,0 +1,55 @@
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:8.13.2"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:2.0.21"
+    }
+}
+
+plugins {
+    id 'com.android.library' version '8.13.2'
+    id 'org.jetbrains.kotlin.android' version '2.0.21'
+    id 'maven-publish'
+}
+
+group = "com.snappy"
+version = "1.0.0"
+
+android {
+    namespace 'com.snappy.testmodule'
+    compileSdk 35
+
+    defaultConfig {
+        minSdk 21
+    }
+
+    publishing {
+        singleVariant("release") {
+            withSourcesJar()
+        }
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            register("release", MavenPublication) {
+                groupId = project.group
+                artifactId = "testmodule"
+                version = project.version
+
+                afterEvaluate {
+                    from components.findByName("release")
+                }
+            }
+        }
+    }
+}
