@@ -38,15 +38,17 @@ android {
     }
 }
 
-publishing {
-    publications {
-        register("release", MavenPublication) {
-            groupId = project.group
-            artifactId = "testmodule"
-            version = project.version
+afterEvaluate {
+    publishing {
+        publications {
+            register("release", MavenPublication) {
+                groupId = project.group
+                artifactId = "testmodule"
+                version = project.version
 
-            afterEvaluate {
-                from components.findByName("release")
+                afterEvaluate {
+                    from components.findByName("release")
+                }
             }
         }
     }
