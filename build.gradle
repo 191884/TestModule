@@ -1,14 +1,18 @@
-plugins {
-    id 'com.android.library'
-    id 'org.jetbrains.kotlin.android'
-    id 'maven-publish'
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+    dependencies {
+        classpath "com.android.tools.build:gradle:8.5.1"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.20"
+    }
 }
-repositories {
-    google()
-    mavenCentral()
-    // JitPack if you depend on GitHub libraries
-    maven { url 'https://jitpack.io' }
-}
+
+apply plugin: 'com.android.library'
+apply plugin: 'org.jetbrains.kotlin.android'
+apply plugin: 'maven-publish'
 
 group = "com.snappy"
 version = "1.0.0"
